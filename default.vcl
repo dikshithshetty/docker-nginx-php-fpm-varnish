@@ -8,12 +8,6 @@ vcl 4.0;
 backend default {
     .host = "127.0.0.1";
     .port = "8080";
-    .probe = {
-        .url = "/";
-        .timeout = 10s;
-        .interval = 5s;
-        .window = 5;
-        .threshold = 3;
 }
 #
 # Below is a commented-out copy of the default VCL logic.  If you
