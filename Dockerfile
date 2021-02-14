@@ -14,19 +14,19 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install software requirements
 RUN apt-get update -y
 RUN apt-get install nginx -y
-#RUN apt-get install varnish -y
+RUN apt-get install varnish -y
 RUN apt-get install supervisor -y
 # nginx site conf
 
 
-#RUN rm -f /etc/nginx/sites-available/default
-#RUN rm -f /etc/nginx/sites-enabled/default
-#ADD ./nginx-site.conf /etc/nginx/sites-available/default
-#RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-#RUN sed -i 's/listen 80 default_server/listen 8080 default_server/g' /etc/nginx/sites-available/default
-#RUN sed -i '/::/d' /etc/nginx/sites-available/default
-#RUN mkdir -p /etc/varnish/sites
-#ADD default.vcl /etc/varnish/default.vcl
+RUN rm -f /etc/nginx/sites-available/default
+RUN rm -f /etc/nginx/sites-enabled/default
+ADD ./nginx-site.conf /etc/nginx/sites-available/default
+RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+RUN sed -i 's/listen 80 default_server/listen 8080 default_server/g' /etc/nginx/sites-available/default
+RUN sed -i '/::/d' /etc/nginx/sites-available/default
+RUN mkdir -p /etc/varnish/sites
+ADD default.vcl /etc/varnish/default.vcl
 
 # Supervisor Config
 ADD ./supervisord.conf /etc/supervisord.conf
