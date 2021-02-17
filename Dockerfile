@@ -47,3 +47,4 @@ EXPOSE 8080
 EXPOSE 80
 
 CMD ["/bin/bash", "/start.sh"]
+RUN service varnish start
