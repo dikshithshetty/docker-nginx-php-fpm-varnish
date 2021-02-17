@@ -43,6 +43,7 @@ ADD ./index.php /usr/share/nginx/html/index.php
 
 # Expose Ports
 EXPOSE 443
+EXPOSE 8080
 EXPOSE 80
 
 CMD ["/bin/bash", "/start.sh"]
